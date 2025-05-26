@@ -4,7 +4,7 @@ import json
 import time
 
 class BudcoinNode:
-    def __init__(self, host='127.0.0.1', port=5000):
+    def __init__(self, host='127.0.0.1', port=5001):
         self.host = host
         self.port = port
         self.peers = []
@@ -70,20 +70,13 @@ class BudcoinNode:
 
     def start(self):
         mining_thread = threading.Thread(target=self.mine_block_loop)
-        mining_thread.daemon = True  # Делаем поток фоновым
         mining_thread.start()
-        try:
-            while True:
-                conn, addr = self.sock.accept()
-                thread = threading.Thread(target=self.handle_client, args=(conn, addr))
-                thread.daemon = True  # Делаем поток фоновым
-                thread.start()
-        except KeyboardInterrupt:
-            print("Остановка узла...")
-            self.sock.close()
-            exit(0)
+        while True:
+            conn, addr = self.sock.accept()
+            thread = threading.Thread(target=self.handle_client, args=(conn, addr))
+            thread.start()
 
 if __name__ == "__main__":
-    node = BudcoinNode(port=5000)
-    node.connect_to_peer('127.0.0.1', 5001)
+    node = BudcoinNode(port=5001)
+    node.connect_to_peer('127.0.0.1', 5000)
     node.start()
