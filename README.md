@@ -29,41 +29,21 @@ Budcoin is a true blockchain with Proof-of-Work (PoW):
    ```bash
    git clone https://github.com/Buddhacoin/Budcoin.git
    cd Budcoin
+- ## Run a node or connect to another node:
 
-- **Run a node:**
-
-bash
-
-python3 Budcoin.py 5000
-
-- **(Optional) Connect to another node:**
-
-bash
-
-python3 Budcoin.py 5001 127.0.0.1 5000
+| Action                     | Command                                    |
+|----------------------------|--------------------------------------------|
+| Start the First Node       | ```bash<br>python3 Budcoin.py 5000```      |
+| Start a Second Node        | ```bash<br>python3 Budcoin.py 5001 127.0.0.1 5000``` |
 
 ### Usage
 
-**Running a Node:** Start a node to participate in mining and blockchain synchronization.
+- **Running a Node:** Start a node to participate in mining and blockchain synchronization.
 
-**Mining:** Each block includes a reward (50 BDC initially, with halving every 210,000 blocks).
+- **Mining:** Each block includes a reward (50 BDC initially, with halving every 210,000 blocks).
 
-**Transactions:** Create transactions programmatically using the create_transaction(sender, receiver, amount) method.
+- **Transactions:** Create transactions programmatically using the create_transaction(sender, receiver, amount) method.
 
-**Check Balance:** Use the get_balance(address) method to view an address's balance.
+- **Check Balance:** Use the get_balance(address) method to view an address's balance.
 
-**P2P Network:** Nodes automatically sync with peers to maintain the latest blockchain state.
-
-### Examples
-**Start the first node:**
-   
-bash
-
-python3 Budcoin.py 5000
-
-**Start a second node and connect to the first:**
-
-bash
-
-python3 Budcoin.py 5001 127.0.0.1 5000
-
+- **P2P Network:** Nodes automatically sync with peers to maintain the latest blockchain state.
